@@ -103,12 +103,14 @@ button:hover {
 @media (max-width: 476px) {
     .container {
         width: 440px;
+        margin-top: 40px;
     }
 }
 
 @media (max-width: 441px) {
     .container {
         width: 400px;
+        margin-top: 40px;
     }
 
     input {
@@ -127,6 +129,7 @@ button:hover {
 @media (max-width: 426px) {
     .container {
         width: 380px;
+        margin-top: 40px;
     }
 
     input {
