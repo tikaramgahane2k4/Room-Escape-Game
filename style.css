@@ -104,6 +104,7 @@ button:hover {
     .container {
         width: 440px;
         margin-top: 40px;
+        height: 550px;
     }
 }
 
@@ -111,6 +112,7 @@ button:hover {
     .container {
         width: 400px;
         margin-top: 40px;
+        height: 550px;
     }
 
     input {
@@ -130,6 +132,7 @@ button:hover {
     .container {
         width: 380px;
         margin-top: 40px;
+        height: 550px;
     }
 
     input {
