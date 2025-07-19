@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escape Room - Level 2</title>
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Escape Room</h1>
+            <p class="subtitle">Solve all 6 puzzles to escape!</p>
+        </header>
+
+        <div id="puzzle-1" class="puzzle-card">
+            <h2 class="puzzle-title">Puzzle 1</h2>
+            <p class="puzzle-desc">You can hear me, but never see me?</p>
+            <input type="text" id="answer1" placeholder="Your answer">
+            <button onclick="checkAnswer(1, 'sound')">Submit</button>
+        </div>
+
+        <div id="puzzle-2" class="puzzle-card" style="display:none;">
+            <h2 class="puzzle-title">Puzzle 2</h2>
+            <p class="puzzle-desc">I speak without a mouth and hear without ears. What am I?</p>
+            <input type="text" id="answer2" placeholder="Your answer">
+            <button onclick="checkAnswer(2, 'echo')">Submit</button>
+        </div>
+
+        <div id="puzzle-3" class="puzzle-card" style="display:none;">
+            <h2 class="puzzle-title">Puzzle 3</h2>
+            <p class="puzzle-desc">What goes up but never comes down?</p>
+            <input type="text" id="answer3" placeholder="Your answer">
+            <button onclick="checkAnswer(3, 'age')">Submit</button>
+        </div>
+
+        <div id="puzzle-4" class="puzzle-card" style="display:none;">
+            <h2 class="puzzle-title">Puzzle 4</h2>
+            <p class="puzzle-desc">I am the beginning of the end and the end of time and space?</p>
+            <input type="text" id="answer4" placeholder="Your answer">
+            <button onclick="checkAnswer(4, 'e')">Submit</button>
+        </div>
+
+        <div id="puzzle-5" class="puzzle-card" style="display:none;">
+            <h2 class="puzzle-title">Puzzle 5</h2>
+            <p class="puzzle-desc">The more you have of me, the less you see. What am I?</p>
+            <input type="text" id="answer5" placeholder="Your answer">
+            <button onclick="checkAnswer(5, 'darkness')">Submit</button>
+        </div>
+
+        <div id="puzzle-6" class="puzzle-card" style="display:none;">
+            <h2 class="puzzle-title">Puzzle 6</h2>
+            <p class="puzzle-desc">I can hold all your secrets, but never speak?</p>
+            <input type="text" id="answer6" placeholder="Your answer">
+            <button onclick="checkAnswer(6, 'diary')">Escape!</button>
+        </div>
+
+        <div id="win-message" class="clue-section" style="display:none;">
+            <h2 class="clue-title"> You Escaped!</h2>
+            <p class="clue-text">Great job solving all 6 puzzles. You’re free!</p>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(step, correctAnswer) {
+            const input = document.getElementById(`answer${step}`).value.trim().toLowerCase();
+            if (input === correctAnswer.toLowerCase()) {
+                const next = document.getElementById(`puzzle-${step + 1}`);
+                if (next) {
+                    next.style.display = 'block';
+                } else {
+                    document.getElementById('win-message').style.display = 'block';
+                }
+            } else {
+                alert("Incorrect! Try again.");
+            }
+        }
+    </script>
+</body>
+
+</html>

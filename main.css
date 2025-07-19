@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: #e0f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.container {
+    max-width: 800px;
+    width: 90%;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 36px;
+    color: yellow;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #94a3b8;
+}
+
+.puzzle-card {
+    background-color: black;
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.puzzle-title {
+    font-size: 24px;
+    color: #67e8f9;
+}
+
+.puzzle-desc {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #cbd5e1;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #06b6d4;
+    border-radius: 5px;
+    background: #0f172a;
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #06b6d4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0284c7;
+}
+
+.clue-section {
+    background-color: #0d9488;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.clue-title {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.clue-text {
+    font-size: 18px;
+}

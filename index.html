@@ -1,285 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hidden Room Escape - 7 Steps Challenge</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap">
+    <title>Login Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- Game Container -->
-    <div class="game-container">
-        <!-- Header -->
-        <header class="game-header">
-            <h1 class="game-title">HIDDEN ROOM ESCAPE</h1>
-            <p class="game-subtitle">Solve 7 puzzles to escape the locked room</p>
-        </header>
+    <div class="container">
+        <h1>Fill Your Details </h1>
+        <form class="content">
+            <label for="firs-name">Your First Name:</label>
+            <input type="text" class="user" id="firs-name" placeholder="Enter Your Name" required><br><br>
 
-        <!-- Game Status -->
-        <div class="game-status">
-            <div class="status-card">
-                <div class="status-item">
-                    <span class="status-icon">🔒</span>
-                    <span class="status-text">Room <span id="room-number">1</span></span>
-                </div>
-                <div class="status-item">
-                    <span class="status-icon">🔑</span>
-                    <span class="status-text">Keys: <span id="key-count">0</span>/7</span>
-                </div>
-                <div class="progress-dots">
-                    <div class="dot" id="dot-1"></div>
-                    <div class="dot" id="dot-2"></div>
-                    <div class="dot" id="dot-3"></div>
-                    <div class="dot" id="dot-4"></div>
-                    <div class="dot" id="dot-5"></div>
-                    <div class="dot" id="dot-6"></div>
-                    <div class="dot" id="dot-7"></div>
-                </div>
-            </div>
-        </div>
+            <label for="last-name">Your Last Name:</label>
+            <input type="text" class="user" id="last-name" placeholder="Enter Your Name" required><br><br>
 
-        <!-- Inventory -->
-        <div class="inventory" id="inventory">
-            <!-- Keys will be added here dynamically -->
-        </div>
+            <label for="mail" id="email">Your Email:</label>
+            <input type="email" class="user" id="mail" placeholder="Enter Your Email" required><br><br>
 
-        <!-- Puzzles Grid -->
-        <div class="puzzles-grid">
-            <!-- Puzzle 1: Sequence Lock -->
-            <div class="puzzle-card" id="puzzle-1">
-                <div class="puzzle-header">
-                    <h3 class="puzzle-title">
-                        <span class="puzzle-icon">🧠</span>
-                        Step 1: Sequence Lock
-                        <span class="check-icon" id="check-1"></span>
-                    </h3>
-                    <p class="puzzle-description">Click the buttons in the correct order</p>
-                </div>
-                <div class="puzzle-content">
-                    <div class="sequence-buttons">
-                        <button class="sequence-btn" onclick="handleSequence(1)">1</button>
-                        <button class="sequence-btn" onclick="handleSequence(2)">2</button>
-                        <button class="sequence-btn" onclick="handleSequence(3)">3</button>
-                    </div>
-                    <div class="sequence-display">
-                        <p>Sequence: <span id="sequence-display"></span></p>
-                    </div>
-                    <button class="hint-btn" onclick="toggleHint(1)">Show Hint</button>
-                    <div class="hint-box" id="hint-1">
-                        🔢 The sequence is hidden in the room number pattern: 1, 3, 2
-                    </div>
-                </div>
-            </div>
+            <button type="submit">
+                <a href="main.html">Submit</a>
+            </button>
+        </form>
 
-            <!-- Puzzle 2: Hidden Mirror -->
-            <div class="puzzle-card" id="puzzle-2">
-                <div class="puzzle-header">
-                    <h3 class="puzzle-title">
-                        <span class="puzzle-icon">👁️</span>
-                        Step 2: Hidden Mirror
-                        <span class="check-icon" id="check-2"></span>
-                    </h3>
-                    <p class="puzzle-description">Find the hidden message</p>
-                </div>
-                <div class="puzzle-content">
-                    <div class="mirror-area" onmouseenter="revealHiddenClue()">
-                        <div class="mirror-icon">🪞</div>
-                        <p class="mirror-text" id="mirror-text">Hover to reveal</p>
-                        <p class="hidden-message" id="hidden-message">THE SILVER KEY IS YOURS</p>
-                    </div>
-                    <button class="hint-btn" onclick="toggleHint(2)">Show Hint</button>
-                    <div class="hint-box" id="hint-2">
-                        👁️ Look carefully at the mirror reflection - hover over it to see the hidden message
-                    </div>
-                </div>
-            </div>
-
-            <!-- Puzzle 3: Number Lock -->
-            <div class="puzzle-card" id="puzzle-3">
-                <div class="puzzle-header">
-                    <h3 class="puzzle-title">
-                        <span class="puzzle-icon">🔐</span>
-                        Step 3: Number Lock
-                        <span class="check-icon" id="check-3"></span>
-                    </h3>
-                    <p class="puzzle-description">Enter the correct number</p>
-                </div>
-                <div class="puzzle-content">
-                    <div class="lock-icon">🔐</div>
-                    <input type="number" class="number-input" id="number-input" placeholder="Enter code">
-                    <button class="unlock-btn" onclick="checkNumberLock()">Unlock</button>
-                    <button class="hint-btn" onclick="toggleHint(3)">Show Hint</button>
-                    <div class="hint-box" id="hint-3">
-                        🔐 The number lock code is the sum of all room numbers: 1+2+3 = ?
-                    </div>
-                </div>
-            </div>
-
-            <!-- Puzzle 4: Color Pattern -->
-            <div class="puzzle-card" id="puzzle-4">
-                <div class="puzzle-header">
-                    <h3 class="puzzle-title">
-                        <span class="puzzle-icon">🎨</span>
-                        Step 4: Color Pattern
-                        <span class="check-icon" id="check-4"></span>
-                    </h3>
-                    <p class="puzzle-description">Follow the rainbow pattern</p>
-                </div>
-                <div class="puzzle-content">
-                    <div class="color-buttons">
-                        <button class="color-btn red" onclick="handleColor('red')"></button>
-                        <button class="color-btn blue" onclick="handleColor('blue')"></button>
-                        <button class="color-btn green" onclick="handleColor('green')"></button>
-                        <button class="color-btn yellow" onclick="handleColor('yellow')"></button>
-                    </div>
-                    <div class="color-display">
-                        <p>Pattern: <span id="color-display"></span></p>
-                    </div>
-                    <button class="hint-btn" onclick="toggleHint(4)">Show Hint</button>
-                    <div class="hint-box" id="hint-4">
-                        🌈 Follow the rainbow order: Red → Yellow → Green → Blue
-                    </div>
-                </div>
-            </div>
-
-            <!-- Puzzle 5: Word Puzzle -->
-            <div class="puzzle-card" id="puzzle-5">
-                <div class="puzzle-header">
-                    <h3 class="puzzle-title">
-                        <span class="puzzle-icon">📝</span>
-                        Step 5: Word Scramble
-                        <span class="check-icon" id="check-5"></span>
-                    </h3>
-                    <p class="puzzle-description">Unscramble the letters</p>
-                </div>
-                <div class="puzzle-content">
-                    <div class="scrambled-word">PEACSE</div>
-                    <input type="text" class="word-input" id="word-input" placeholder="Enter the word">
-                    <button class="solve-btn" onclick="checkWord()">Solve</button>
-                    <button class="hint-btn" onclick="toggleHint(5)">Show Hint</button>
-                    <div class="hint-box" id="hint-5">
-                        💭 It's what you're trying to do from this room... 6 letters!
-                    </div>
-                </div>
-            </div>
-
-            <!-- Puzzle 6: Math Riddle -->
-            <div class="puzzle-card" id="puzzle-6">
-                <div class="puzzle-header">
-                    <h3 class="puzzle-title">
-                        <span class="puzzle-icon">🧮</span>
-                        Step 6: Math Riddle
-                        <span class="check-icon" id="check-6"></span>
-                    </h3>
-                    <p class="puzzle-description">Solve the equation</p>
-                </div>
-                <div class="puzzle-content">
-                    <div class="math-equation">2 + 3 × 4 - 5 = ?</div>
-                    <input type="number" class="math-input" id="math-input" placeholder="Answer">
-                    <button class="solve-btn" onclick="checkMath()">Calculate</button>
-                    <button class="hint-btn" onclick="toggleHint(6)">Show Hint</button>
-                    <div class="hint-box" id="hint-6">
-                        📚 Remember order of operations: Multiply first, then add and subtract!
-                    </div>
-                </div>
-            </div>
-
-            <!-- Puzzle 7: Final Key Combination -->
-            <div class="puzzle-card" id="puzzle-7">
-                <div class="puzzle-header">
-                    <h3 class="puzzle-title">
-                        <span class="puzzle-icon">🚪</span>
-                        Step 7: Final Exit
-                        <span class="check-icon" id="check-7"></span>
-                    </h3>
-                    <p class="puzzle-description">Use all keys to escape</p>
-                </div>
-                <div class="puzzle-content">
-                    <div class="final-door">
-                        <div class="door-icon">🚪</div>
-                        <div class="key-slots">
-                            <div class="key-slot" id="slot-1">🔑</div>
-                            <div class="key-slot" id="slot-2">🔑</div>
-                            <div class="key-slot" id="slot-3">🔑</div>
-                            <div class="key-slot" id="slot-4">🔑</div>
-                            <div class="key-slot" id="slot-5">🔑</div>
-                            <div class="key-slot" id="slot-6">🔑</div>
-                        </div>
-                        <button class="escape-btn" onclick="attemptEscape()" id="escape-btn" disabled>ESCAPE</button>
-                    </div>
-                    <button class="hint-btn" onclick="toggleHint(7)">Show Hint</button>
-                    <div class="hint-box" id="hint-7">
-                        🔓 Collect all 6 keys from previous puzzles to unlock the final door!
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Success Modal -->
-        <div class="modal" id="success-modal">
-            <div class="modal-content">
-                <h2 class="success-title">🎉 ESCAPED! 🎉</h2>
-                <p class="success-text">Congratulations! You've successfully escaped the hidden room!</p>
-                <div class="collected-keys" id="final-keys"></div>
-                <button class="play-again-btn" onclick="resetGame()">Play Again</button>
-            </div>
-        </div>
-
-        <!-- Toast Notifications -->
-        <div class="toast" id="toast">
-            <span class="toast-text" id="toast-text"></span>
-        </div>
     </div>
-
-    <!-- Feedback Form -->
-    <footer class="feedback-section">
-        <div class="feedback-container">
-            <div class="feedback-card">
-                <h2 class="feedback-title">Game Feedback</h2>
-                <p class="feedback-subtitle">Share your experience and help us improve the game!</p>
-                
-                <form class="feedback-form" id="feedback-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Rate Your Experience</label>
-                        <div class="rating-stars">
-                            <span class="star" onclick="setRating(1)">⭐</span>
-                            <span class="star" onclick="setRating(2)">⭐</span>
-                            <span class="star" onclick="setRating(3)">⭐</span>
-                            <span class="star" onclick="setRating(4)">⭐</span>
-                            <span class="star" onclick="setRating(5)">⭐</span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Your Feedback</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your experience with the game..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <span>📨</span>
-                        Send Feedback
-                    </button>
-                </form>
-            </div>
-        </div>
-        
-        <div class="footer-text">
-            <p>© 2024 Hidden Room Escape Game • Made with ❤️ for puzzle lovers</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
+
 </html>
