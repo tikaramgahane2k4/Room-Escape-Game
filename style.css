@@ -104,10 +104,10 @@ button:hover {
     .container {
         width: 440px;
         margin-top: 40px;
-        height: 600px;
+        height: 650px;
     }
     .content{
-        margin-top: 50px;
+        margin-top: 40px;
     }
 }
 
@@ -115,10 +115,10 @@ button:hover {
     .container {
         width: 400px;
         margin-top: 40px;
-        height: 600px;
+        height: 650px;
     }
     .content{
-        margin-top: 50px;
+        margin-top: 40px;
     }
 
     input {
@@ -138,10 +138,10 @@ button:hover {
     .container {
         width: 380px;
         margin-top: 40px;
-        height: 600px;
+        height: 650px;
     }
     .content{
-        margin-top: 50px;
+        margin-top: 40px;
     }
 
     input {
